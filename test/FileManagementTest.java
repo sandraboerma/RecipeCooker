@@ -1,31 +1,32 @@
 import org.junit.jupiter.api.Test;
 import java.nio.file.Path;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FileManagementTest {
 
     @Test
     public void testCreatePath(){
         Path path = Path.of("testRecipe.txt");
-        assertEquals(1,FileManagement.createPath(path));
+        assertTrue(FileManagement.createPath(path));
     }
 
     @Test
     public void testReadPath(){
         Path path = Path.of("testRecipe.txt");
-        assertEquals(1,FileManagement.readPath(path));
+        assertTrue(FileManagement.readPath(path));
     }
 
     @Test
     public void testDeletePath(){
         Path path = Path.of("testRecipe.txt");
-        assertEquals(1,FileManagement.deletePath(path));
+        assertTrue(FileManagement.deletePath(path));
     }
 
-    @Test
-    public void testModifyPath(){
-        Path path = Path.of("testRecipe.txt");
-        assertEquals(1,FileManagement.modifyPath(path));
-    }
+    //@TODO Only attempt this when G requirements are met.
+//    @Test
+//    public void testModifyPath(){
+//        Path path = Path.of("testRecipe.txt");
+//        assertTrue(FileManagement.modifyPath(path));
+//    }
 
 }
