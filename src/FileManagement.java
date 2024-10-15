@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileManagement {
@@ -15,8 +17,13 @@ public class FileManagement {
     //@TODO Validate file creation logic.
     //@TODO Identify and handle possible exceptions
     public static boolean createPath(Path pathName){
-        System.out.println("Init method, code not implemented. Method expected to fail.");
-        return false;
+        try {
+            Files.createFile(pathName);
+            return true;
+        } catch (IOException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //@TODO Add code for reading a file
