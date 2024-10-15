@@ -11,22 +11,34 @@ public class FileManagement {
 
     */
 
-    // @TODO Add code for creating a file
+    //@TODO Add code for creating a file.
+    //@TODO Validate file creation logic.
+    //@TODO Identify and handle possible exceptions
     public static boolean createPath(Path pathName){
-
+        System.out.println("Init method, code not implemented. Method expected to fail.");
         return false;
     }
 
+    //@TODO Add code for reading a file
+    //@TODO Validate file reading logic.
+    //@TODO Identify and handle possible exceptions
     public static boolean readPath(Path pathName){
         System.out.println("Init method, code not implemented. Method expected to fail.");
         return false;
     }
 
+    //@TODO Add code for deleting a file
+    //@TODO Validate file deletion logic.
+    //@TODO Identify and handle possible exceptions
     public static boolean deletePath(Path pathName){
         System.out.println("Init method, code not implemented. Method expected to fail.");
         return false;
     }
-    // @TODO Optional - only attempt this if the main program is completed.
+
+    //@TODO Optional - only attempt this if the main program is completed.
+    //@TODO Add code for modifying a file.
+    //@TODO Validate file modification logic.
+    //@TODO Identify and handle possible exceptions
 //    public static boolean modifyPath(Path pathName){
 //        System.out.println("Init method, code not implemented. Method expected to fail.");
 //        return false;
