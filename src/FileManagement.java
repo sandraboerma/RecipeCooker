@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -28,6 +29,10 @@ public class FileManagement {
         try {
             Files.createFile(pathName);
             return true;
+        } catch (FileAlreadyExistsException e) {
+            System.out.println("A recipe with the name " + pathName + " already exists.");
+            return true;
+            //@TODO Another prompt to be implemented asking user to give another name.
         } catch (IOException e){
             e.printStackTrace();
             return false;
