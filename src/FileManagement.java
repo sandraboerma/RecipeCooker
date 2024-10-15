@@ -16,6 +16,14 @@ public class FileManagement {
     //@TODO Add code for creating a file.
     //@TODO Validate file creation logic.
     //@TODO Identify and handle possible exceptions
+
+    /*
+     * @TODO validate
+     *   case 1: File already exist
+     *   case 2: File parent directory missing
+     *   case 3: Other I/O Exceptions?
+     * */
+
     public static boolean createPath(Path pathName){
         try {
             Files.createFile(pathName);
@@ -25,7 +33,7 @@ public class FileManagement {
             return false;
         }
     }
-
+/*
     //@TODO Add code for reading a file
     //@TODO Validate file reading logic.
     //@TODO Identify and handle possible exceptions
@@ -41,7 +49,7 @@ public class FileManagement {
         System.out.println("Init method, code not implemented. Method expected to fail.");
         return false;
     }
-
+*/
     //@TODO Optional - only attempt this if the main program is completed.
     //@TODO Add code for modifying a file.
     //@TODO Validate file modification logic.
