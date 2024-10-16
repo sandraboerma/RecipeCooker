@@ -1,34 +1,18 @@
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.nio.file.*;
 
 public class FileManagement {
     /*
-
     This class includes functions relate to file management such as
-    - create file
     - read file
     - delete file
     - modify file
-
     */
-
-    //@TODO Validate file creation logic.
-    //@TODO Identify and handle possible exceptions
-
-    /*
-     * @TODO validate
-     *   case 1: File already exist
-     *   case 2: File parent directory missing
-     *   case 3: Empty String/file name
-     *   case 4: Other I/O Exceptions?
-     * */
 
     public static boolean createPath(Path pathName){
         try {
             Files.createFile(pathName);
+            System.out.println("Recipe " + pathName + " created.");
             return true;
         } catch (FileAlreadyExistsException e) {
             System.out.println("A recipe with the name " + pathName + " already exists.");
@@ -37,8 +21,12 @@ public class FileManagement {
         } catch (NoSuchFileException e) {
             System.out.println("The targeted folder is missing.");
             return true;
+        } catch (AccessDeniedException e) {
+            System.out.println("Access denied for creating the recipe " + pathName);
+            return true;
         } catch (IOException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("An I/O error occurred: " + e.getMessage());
             return false;
         }
     }

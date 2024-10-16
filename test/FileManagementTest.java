@@ -6,7 +6,7 @@ public class FileManagementTest {
 
     @Test
     public void testCreatePath(){
-        Path path = Path.of("/testRecipe/testRecipe.txt");
+        Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.createPath(path));
     }
 /*
