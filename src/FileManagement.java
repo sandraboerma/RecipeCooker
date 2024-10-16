@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 public class FileManagement {
@@ -14,7 +15,6 @@ public class FileManagement {
 
     */
 
-    //@TODO Add code for creating a file.
     //@TODO Validate file creation logic.
     //@TODO Identify and handle possible exceptions
 
@@ -22,7 +22,8 @@ public class FileManagement {
      * @TODO validate
      *   case 1: File already exist
      *   case 2: File parent directory missing
-     *   case 3: Other I/O Exceptions?
+     *   case 3: Empty String/file name
+     *   case 4: Other I/O Exceptions?
      * */
 
     public static boolean createPath(Path pathName){
@@ -33,6 +34,9 @@ public class FileManagement {
             System.out.println("A recipe with the name " + pathName + " already exists.");
             return true;
             //@TODO Another prompt to be implemented asking user to give another name.
+        } catch (NoSuchFileException e) {
+            System.out.println("The targeted folder is missing.");
+            return true;
         } catch (IOException e){
             e.printStackTrace();
             return false;
