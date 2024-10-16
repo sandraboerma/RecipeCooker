@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,16 +34,22 @@ public class FileManagement {
         }
     }
 
-    //@TODO Add code for writing to a file
-    //@TODO Validate file writing logic.
-    //@TODO Identify and handle possible exceptions
     public static boolean writeToPath(Path pathName){
-        try (PrintWriter writeToPath = new PrintWriter(new FileWriter(pathName.toFile()))) {
+        try (PrintWriter writeToPath = new PrintWriter(new FileWriter(pathName.toFile(),true))) {
             writeToPath.println("This text is a placeholder.");
+            //@TODO need to evaluate how to execute writing options.
+            return true;
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not find the recipe.");
+            return true;
+        }  catch (AccessDeniedException e) {
+            System.out.println("Access denied. Unable to open " + pathName);
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("An I/O error occurred: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
 /*
