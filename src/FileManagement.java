@@ -1,4 +1,6 @@
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.*;
 
 public class FileManagement {
@@ -30,6 +32,19 @@ public class FileManagement {
             return false;
         }
     }
+
+    //@TODO Add code for writing to a file
+    //@TODO Validate file writing logic.
+    //@TODO Identify and handle possible exceptions
+    public static boolean writeToPath(Path pathName){
+        try (PrintWriter writeToPath = new PrintWriter(new FileWriter(pathName.toFile()))) {
+            writeToPath.println("This text is a placeholder.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 /*
     //@TODO Add code for reading a file
     //@TODO Validate file reading logic.

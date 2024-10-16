@@ -9,6 +9,13 @@ public class FileManagementTest {
         Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.createPath(path));
     }
+
+    @Test
+    public void testWriteToPath(){
+        Path path = Path.of("");
+        assertTrue(FileManagement.writeToPath(path));
+    }
+
 /*
     @Test
     public void testReadPath(){
