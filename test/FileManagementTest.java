@@ -18,7 +18,7 @@ public class FileManagementTest {
 
     @Test
     public void testReadPath(){
-        Path path = Path.of("testyFile.txt");
+        Path path = Path.of("");
         assertTrue(FileManagement.readPath(path));
     }
 

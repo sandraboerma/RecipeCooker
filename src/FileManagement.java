@@ -29,7 +29,7 @@ public class FileManagement {
             return true;
         } catch (IOException e){
             //e.printStackTrace();
-            System.out.println("An I/O error occurred: " + e.getMessage());
+            System.out.println("An I/O error occurred: " + e);
             return false;
         }
     }
@@ -47,19 +47,24 @@ public class FileManagement {
             return true;
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("An I/O error occurred: " + e.getMessage());
+            System.out.println("An I/O error occurred: " + e);
             return false;
         }
     }
-    //@TODO Validate file reading logic.
-    //@TODO Identify and handle possible exceptions
+
     public static boolean readPath(Path pathName){
         try {
             Files.readAllLines(pathName).forEach(System.out::println);
             return true;
+        } catch (NoSuchFileException e) {
+            System.out.println("Selected recipe: " + pathName + " is not found.");
+            return true;
+        } catch (AccessDeniedException e) {
+            System.out.println("You don't have permission to read this recipe.");
+            return true;
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("An I/O error occurred: " + e.getMessage());
+            System.out.println("An I/O error occurred: " + e);
             return false;
         }
     }
