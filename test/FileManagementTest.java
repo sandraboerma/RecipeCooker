@@ -6,20 +6,20 @@ public class FileManagementTest {
 
     @Test
     public void testCreatePath(){
-        Path path = Path.of("");
+        Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.createPath(path));
     }
 
     @Test
     public void testWriteToPath(){
-        Path path = Path.of("--");
+        Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.writeToPath(path));
     }
 
 /*
     @Test
     public void testReadPath(){
-        Path path = Path.of("testRecipe.txt");
+        Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.readPath(path));
     }
 

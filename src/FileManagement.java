@@ -51,15 +51,21 @@ public class FileManagement {
             return false;
         }
     }
-
-/*
     //@TODO Add code for reading a file
     //@TODO Validate file reading logic.
     //@TODO Identify and handle possible exceptions
     public static boolean readPath(Path pathName){
-        System.out.println("Init method, code not implemented. Method expected to fail.");
-        return false;
+        try {
+            Files.readString(pathName);
+            return true;
+        } catch (IOException e) {
+            //e.printStackTrace();
+            System.out.println("An I/O error occurred: " + e.getMessage());
+            return false;
+        }
     }
+
+/*
 
     //@TODO Add code for deleting a file
     //@TODO Validate file deletion logic.
