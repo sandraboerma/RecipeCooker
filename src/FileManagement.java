@@ -75,6 +75,10 @@ public class FileManagement {
         try {
             Files.delete(pathName);
             return true;
+        } catch (FileSystemException e) {
+            System.out.println(e);
+            System.out.println("The recipe cannot be deleted as it's currently being used elsewhere.");
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;

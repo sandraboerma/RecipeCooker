@@ -6,7 +6,7 @@ public class FileManagementTest {
 
     @Test
     public void testCreatePath(){
-        Path path = Path.of("testyFile.txt");
+        Path path = Path.of("testyPath.txt");
         assertTrue(FileManagement.createPath(path));
     }
 
@@ -18,18 +18,16 @@ public class FileManagementTest {
 
     @Test
     public void testReadPath(){
-        Path path = Path.of("");
+        Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.readPath(path));
     }
 
-/*
-
     @Test
     public void testDeletePath(){
-        Path path = Path.of("testRecipe.txt");
+        Path path = Path.of("");
         assertTrue(FileManagement.deletePath(path));
     }
-*/
+
     //@TODO Only attempt this when G requirements are met.
 //    @Test
 //    public void testModifyPath(){
