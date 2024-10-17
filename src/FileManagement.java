@@ -51,12 +51,11 @@ public class FileManagement {
             return false;
         }
     }
-    //@TODO Add code for reading a file
     //@TODO Validate file reading logic.
     //@TODO Identify and handle possible exceptions
     public static boolean readPath(Path pathName){
         try {
-            Files.readString(pathName);
+            Files.readAllLines(pathName).forEach(System.out::println);
             return true;
         } catch (IOException e) {
             //e.printStackTrace();

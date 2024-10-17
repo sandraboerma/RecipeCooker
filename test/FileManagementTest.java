@@ -16,12 +16,13 @@ public class FileManagementTest {
         assertTrue(FileManagement.writeToPath(path));
     }
 
-/*
     @Test
     public void testReadPath(){
         Path path = Path.of("testyFile.txt");
         assertTrue(FileManagement.readPath(path));
     }
+
+/*
 
     @Test
     public void testDeletePath(){
