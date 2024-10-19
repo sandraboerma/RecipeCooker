@@ -1,11 +1,16 @@
 package utility;
 
+import java.util.Scanner;
+
 public class ScannerManagement {
 
-    String temporary = "This is a placeholder for Scanner methods";
+    private static final Scanner sc = new Scanner(System.in);
 
-    public void getTemporary(){
-        System.out.println(temporary);
+    public static String getUserInput(String userInput) {
+        return sc.nextLine();
     }
 
+    public static void closeScanner() {
+        sc.close();
+    }
 }
