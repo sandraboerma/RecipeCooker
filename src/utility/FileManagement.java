@@ -1,3 +1,5 @@
+package utility;
+
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,12 +7,6 @@ import java.io.PrintWriter;
 import java.nio.file.*;
 
 public class FileManagement {
-    /*
-    This class includes functions relate to file management such as
-    - read file
-    - delete file
-    - modify file
-    */
 
     public static boolean createPath(Path pathName){
         try {
@@ -69,8 +65,6 @@ public class FileManagement {
         }
     }
 
-    //@TODO Validate file deletion logic.
-    //@TODO Identify and handle possible exceptions
     public static boolean deletePath(Path pathName){
         try {
             Files.delete(pathName);
@@ -87,7 +81,6 @@ public class FileManagement {
             return false;
         }
     }
-
 
     //@TODO Optional - only attempt this if the main program is completed.
     //@TODO Add code for modifying a file.
