@@ -6,7 +6,7 @@ public class ScannerManagement {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static String getUserInput(String userInput) {
+    public static String getUserInput() {
         return sc.nextLine();
     }
 

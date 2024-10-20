@@ -15,8 +15,6 @@ public class MenuHub {
         initializeCreateRecipe();
     }
 
-    //@TODO: Add randomly generated startup Greetings for the user
-
     private static void initializeMain(){
         mainMenu.put(1, "Create Recipe");
         mainMenu.put(2, "View Recipe");
@@ -31,7 +29,7 @@ public class MenuHub {
         createRecipe.put(3, "Assign category");
         createRecipe.put(4, "Preview recipe");
         createRecipe.put(5, "Save recipe");
-        createRecipe.put(6, "Discard recipe");
+        createRecipe.put(6, "Discard current creation");
     }
 
     private static TreeMap<Integer, String> getMainMenu(){
@@ -54,11 +52,11 @@ public class MenuHub {
     }
 
     public static String getFormattedMainMenu(){
-        return formatMenu(getMainMenu()) + "\nLet's start this visit with option: ";
+        return formatMenu(getMainMenu()) + "\nLet's start this visit with > ";
     }
 
     public static String getFormattedCreateRecipe() {
-        return "Awesome, then let's cook up some recipe! What would you like to do first?\n" +
+        return "\nAwesome, then let's cook up some recipe! What would you like to do first?\n\n" +
                 formatMenu(getCreateRecipe()) + "\nI would like to: ";
     }
 
