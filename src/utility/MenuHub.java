@@ -13,8 +13,7 @@ public class MenuHub {
         initializeCreateRecipe();
     }
 
-
-    public static void initializeMain(){
+    private static void initializeMain(){
         mainMenu.put(1, "Create Recipe");
         mainMenu.put(2, "View Recipe");
         //mainMenu.put(3, "Modify Recipe");
@@ -22,7 +21,7 @@ public class MenuHub {
         mainMenu.put(4, "Exit");
     }
 
-    public static void initializeCreateRecipe(){
+    private static void initializeCreateRecipe(){
         createRecipe.put(1, "Add ingredient");
         createRecipe.put(2, "Add instructions");
         createRecipe.put(3, "Assign category");
@@ -31,14 +30,32 @@ public class MenuHub {
         createRecipe.put(6, "Discard recipe");
     }
 
-    public static TreeMap<Integer, String> getMainMenu(){
+    private static TreeMap<Integer, String> getMainMenu(){
         return mainMenu;
     }
 
-    public static TreeMap<Integer, String> getCreateRecipe(){
+    private static TreeMap<Integer, String> getCreateRecipe(){
         return createRecipe;
     }
 
-//@TODO: Fix toString Override for TreeMap
+    private static String formatMenu(TreeMap<Integer, String> menu){
+        StringBuilder menuString = new StringBuilder();
+        for(Integer key : menu.keySet()){
+            menuString.append(key)
+                    .append(": ")
+                    .append(menu.get(key))
+                    .append("\n");
+        }
+        return menuString.toString();
+    }
+
+    public static String getFormattedMainMenu(){
+        return formatMenu(getMainMenu());
+    }
+
+    public static String getFormattedCreateRecipe() {
+        return formatMenu(getCreateRecipe());
+    }
+
 
 }
