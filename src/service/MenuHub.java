@@ -1,9 +1,11 @@
-package utility;
+package service;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class MenuHub {
 
+    private static final ArrayList<String> startUpGreetings = new ArrayList<>();
     private static final TreeMap<Integer, String> mainMenu = new TreeMap<>();
     private static final TreeMap<Integer, String> createRecipe = new TreeMap<>();
     //private static final TreeMap<Integer, String> modifyRecipeMenu = new TreeMap<>();
@@ -12,6 +14,8 @@ public class MenuHub {
         initializeMain();
         initializeCreateRecipe();
     }
+
+    //@TODO: Add randomly generated startup Greetings for the user
 
     private static void initializeMain(){
         mainMenu.put(1, "Create Recipe");
@@ -50,11 +54,12 @@ public class MenuHub {
     }
 
     public static String getFormattedMainMenu(){
-        return formatMenu(getMainMenu());
+        return formatMenu(getMainMenu()) + "\nLet's start this visit with option: ";
     }
 
     public static String getFormattedCreateRecipe() {
-        return formatMenu(getCreateRecipe());
+        return "Awesome, then let's cook up some recipe! What would you like to do first?\n" +
+                formatMenu(getCreateRecipe()) + "\nI would like to: ";
     }
 
 
