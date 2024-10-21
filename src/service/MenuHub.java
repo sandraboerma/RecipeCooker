@@ -1,18 +1,16 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class MenuHub {
 
-    private static final ArrayList<String> startUpGreetings = new ArrayList<>();
     private static final TreeMap<Integer, String> mainMenu = new TreeMap<>();
-    private static final TreeMap<Integer, String> createRecipe = new TreeMap<>();
+    private static final TreeMap<Integer, String> createRecipeMenu = new TreeMap<>();
     //private static final TreeMap<Integer, String> modifyRecipeMenu = new TreeMap<>();
 
     static {
         initializeMain();
-        initializeCreateRecipe();
+        initializeCreateRecipeMenu();
     }
 
     private static void initializeMain(){
@@ -23,21 +21,21 @@ public class MenuHub {
         mainMenu.put(4, "Exit");
     }
 
-    private static void initializeCreateRecipe(){
-        createRecipe.put(1, "Add ingredient");
-        createRecipe.put(2, "Add instructions");
-        createRecipe.put(3, "Assign category");
-        createRecipe.put(4, "Preview recipe");
-        createRecipe.put(5, "Save recipe");
-        createRecipe.put(6, "Discard current creation");
+    private static void initializeCreateRecipeMenu(){
+        createRecipeMenu.put(1, "Add ingredient");
+        createRecipeMenu.put(2, "Add instructions");
+        createRecipeMenu.put(3, "Assign category");
+        createRecipeMenu.put(4, "Preview recipe");
+        createRecipeMenu.put(5, "Save recipe");
+        createRecipeMenu.put(6, "Discard current creation");
     }
 
     private static TreeMap<Integer, String> getMainMenu(){
         return mainMenu;
     }
 
-    private static TreeMap<Integer, String> getCreateRecipe(){
-        return createRecipe;
+    private static TreeMap<Integer, String> getCreateRecipeMenu(){
+        return createRecipeMenu;
     }
 
     private static String formatMenu(TreeMap<Integer, String> menu){
@@ -55,9 +53,9 @@ public class MenuHub {
         return formatMenu(getMainMenu()) + "\nLet's start this visit with > ";
     }
 
-    public static String getFormattedCreateRecipe() {
+    public static String getFormattedCreateRecipeMenu() {
         return "\nAwesome, then let's cook up some recipe! What would you like to do first?\n\n" +
-                formatMenu(getCreateRecipe()) + "\nI would like to: ";
+                formatMenu(getCreateRecipeMenu()) + "\nI would like to: ";
     }
 
 

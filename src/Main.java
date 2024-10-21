@@ -6,12 +6,10 @@ public class Main {
         System.out.println("\nRecipeCooker is being prepared...\n");
         System.out.println(EntryGreetings.getGreetings());
         System.out.println(MenuHub.getFormattedMainMenu());
-        System.out.println(MenuHub.getFormattedCreateRecipe());
+        System.out.println(MenuHub.getFormattedCreateRecipeMenu());
 
     /*
     Short workflow description
-    //@TODO add a brief intro after starting up the CLI
-
     Upon startup user chooses to
     1. Create Recipe ->
     @TODO call operation method to create recipe -> submenus for related operations and prompt user to select operation

@@ -1,12 +1,20 @@
 package recipe;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Recipe {
 
     private String name;
-    private LinkedList<Ingredient> ingredients = new LinkedList<>();
-    private ArrayList<String> instructions = new ArrayList<>();
+    private List<Ingredient> ingredientList = new ArrayList<>();
+    private List<Instructions> instructionsList = new ArrayList<>();
+
+    public void addIngredient(Ingredient item){
+        ingredientList.add(item);
+    }
+
+    public List<Ingredient> getIngredients() {
+        return new ArrayList<>(ingredientList);
+    }
 
 }
