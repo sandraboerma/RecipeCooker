@@ -10,6 +10,11 @@ public abstract class Recipe {
     private List<Ingredient> ingredientList = new ArrayList<>();
     private List<String> instructionsList = new ArrayList<>();
 
+    public Recipe(String name, String proteinCategory) {
+        this.name = name;
+        this.proteinCategory = proteinCategory;
+    }
+
     public void assignCategory(String mainProteinType){
         this.proteinCategory = mainProteinType;
     }
