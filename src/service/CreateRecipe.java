@@ -1,14 +1,43 @@
 package service;
 
 import recipe.Ingredient;
+import recipe.OvenRecipe;
 import recipe.Recipe;
 import utility.ScannerManagement;
+
+import static recipe.CookingMethod.OVEN;
 
 public class CreateRecipe {
 
     //@TODO - implement sub feature to get recipe name
-
     //@TODO - implement sub feature to get recipe main protein type category
+
+    public static void tempNameForNameAndSelectChild(Recipe recipe) {
+        System.out.print("Bestow upon this creation a name worthy of its taste and power! > ");
+        String newRecipeName = ScannerManagement.getUserInput();
+        System.out.println("""
+                By what arcane method shall this dish be prepared? 
+                1. Enchanted within the fiery depths of the oven, either baked or roasted.
+                2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
+                3. No magic of heat required — crafted fresh from nature’s bounty and served as is.
+                """);
+        String newRecipeCookingMethod = ScannerManagement.getUserInput();
+
+        switch (newRecipeCookingMethod) {
+            case "1" -> {
+                String ovenRecipeProtein = ScannerManagement.getUserInput();
+                String ovenTime = ScannerManagement.getUserInput();
+                String ovenTemp = ScannerManagement.getUserInput();
+                String isSweet = ScannerManagement.getUserInput();
+                new OvenRecipe(newRecipeName, ovenRecipeProtein, Integer.parseInt(ovenTime),
+                        Integer.parseInt(ovenTemp), Boolean.parseBoolean(isSweet));
+            }
+            case "2" -> {}
+            case "3" -> {}
+            default -> System.out.println(RandomizedPrompt.getAskForValidInput());
+        }
+
+    }
 
     public static void addIngredientsToRecipe(Recipe recipe) {
         boolean addingIngredient = false;

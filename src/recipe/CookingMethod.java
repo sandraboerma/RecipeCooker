@@ -1,5 +1,5 @@
 package recipe;
 
 public enum CookingMethod {
-    OVEN,PAN,RAW
+    OVEN,STOVE,RAW
 }
