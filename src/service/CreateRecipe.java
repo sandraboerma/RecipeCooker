@@ -19,7 +19,7 @@ public class CreateRecipe {
                 By what arcane method shall this dish be prepared? 
                 1. Enchanted within the fiery depths of the oven, either baked or roasted.
                 2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
-                3. No magic of heat required — crafted fresh from nature’s bounty and served as is.
+                3. An ancient ritual, known only to seasoned culinary wizards... Or just a simple salad.
                 """);
         String newRecipeCookingMethod = ScannerManagement.getUserInput();
 
