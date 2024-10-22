@@ -1,11 +1,10 @@
-import service.CreateRecipe;
-import service.EntryGreetings;
+import service.RandomizedPrompt;
 import service.MenuHub;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("\nRecipeCooker is being prepared...\n");
-        System.out.println(EntryGreetings.getGreetings());
+        System.out.println(RandomizedPrompt.getGreetings());
         System.out.println(MenuHub.getFormattedMainMenu());
         System.out.println(MenuHub.getFormattedCreateRecipeMenu());
 
@@ -14,8 +13,8 @@ public class Main {
     Upon startup user chooses to
     1. Create Recipe ->
     @TODO call operation method to create recipe -> submenus for related operations and prompt user to select operation
-       -> Add ingredient
-       -> Add instructions
+       -> Add ingredient - validation pending
+       -> Add instructions - validation pending
        -> Assign category
        -> Preview recipe
        -> Save recipe

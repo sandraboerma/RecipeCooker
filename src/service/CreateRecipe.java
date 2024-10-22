@@ -23,7 +23,7 @@ public class CreateRecipe {
                 Ingredient newIngredient = new Ingredient(name, quantity, unit);
                 recipe.addIngredient(newIngredient);
             } else {
-                System.out.println("Wrong input. please try again");
+                System.out.println(RandomizedPrompt.getAskForValidInput());
             }
 
             addingIngredient = shouldContinueAdding("Wouldst thou add another ingredient to this concoction?");
@@ -48,13 +48,10 @@ public class CreateRecipe {
             System.out.println(prompt);
             continueToAdd = ScannerManagement.getUserInput();
             if (!continueToAdd.equals("1") && !continueToAdd.equals("2")){
-                System.out.println("Invalid input...");
+                System.out.println(RandomizedPrompt.getAskForValidInput());
             }
         } while (!continueToAdd.equals("1") && !continueToAdd.equals("2"));
 
         return continueToAdd.equals("1");
     }
-        //@TODO Add another method to gather input and determine e.g. if addingIngredient would be true or false
-        //@TODO Add another method addInstructionsToRecipe
-
 }

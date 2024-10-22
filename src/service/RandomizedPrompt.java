@@ -3,12 +3,14 @@ package service;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class EntryGreetings {
+public class RandomizedPrompt {
 
     private static final ArrayList<String> greetings = new ArrayList<>();
+    private static final ArrayList<String> askForValidInput = new ArrayList<>();
 
     static {
         initializeGreetings();
+        initializeAskForValidInput();
     }
 
     private static void initializeGreetings(){
@@ -26,7 +28,21 @@ public class EntryGreetings {
 
     public static String getGreetings() {
         Random random = new Random();
-        return greetings.get(random.nextInt(0,10));
+        return greetings.get(random.nextInt(0,greetings.size() - 1));
+    }
+
+    private static void initializeAskForValidInput(){
+        askForValidInput.add("Alas, that input is not recognized. Try again, brave one!");
+        askForValidInput.add("The fates do not favor that input. Attempt once more, valiant adventurer!");
+        askForValidInput.add("Your words fall upon deaf ears. Speak again with clarity!");
+        askForValidInput.add("The arcane symbols you entered are misaligned. Try again, lest you tempt the gods of confusion!");
+        askForValidInput.add("The scroll rejects your input. Forge anew and try once more!");
+        askForValidInput.add("The magic falters with that command. Give it another go, hero!");
+    }
+
+    public static String getAskForValidInput(){
+        Random random = new Random();
+        return askForValidInput.get(random.nextInt(0,askForValidInput.size() - 1));
     }
 
 }
