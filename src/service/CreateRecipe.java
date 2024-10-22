@@ -5,6 +5,11 @@ import recipe.Recipe;
 import utility.ScannerManagement;
 
 public class CreateRecipe {
+
+    //@TODO - implement sub feature to get recipe name
+
+    //@TODO - implement sub feature to get recipe main protein type category
+
     public static void addIngredientsToRecipe(Recipe recipe) {
         boolean addingIngredient = false;
 
@@ -31,6 +36,8 @@ public class CreateRecipe {
         } while (addingIngredient);
     }
 
+    //@TODO - implement sub feature to get main cooking method
+
     public static void addInstructionsToRecipe(Recipe recipe) {
         boolean addingInstruction = false;
 
@@ -41,6 +48,8 @@ public class CreateRecipe {
             addingInstruction = shouldContinueAdding("Shall we weave more instructions into this culinary ritual?");
         } while (addingInstruction);
     }
+
+
 
     private static boolean shouldContinueAdding(String prompt) {
         String continueToAdd;
