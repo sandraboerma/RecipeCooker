@@ -1,39 +1,46 @@
 package service;
 
-import recipe.Ingredient;
-import recipe.OvenRecipe;
-import recipe.Recipe;
-import utility.ScannerManagement;
-
-import static recipe.CookingMethod.OVEN;
+import recipe.*;
+import utility.InputParser;
 
 public class CreateRecipe {
 
     //@TODO - implement sub feature to get recipe name
     //@TODO - implement sub feature to get recipe main protein type category
 
-    public static void tempNameForNameAndSelectChild(Recipe recipe) {
-        System.out.print("Bestow upon this creation a name worthy of its taste and power! > ");
-        String newRecipeName = ScannerManagement.getUserInput();
-        System.out.println("""
+    public static void delegateRecipeNameAndClass(Recipe recipe) {
+        String newRecipeName = InputParser.getUserInput("Bestow upon this creation a name worthy of its taste and power! > ");
+        String newRecipeCookingMethod = InputParser.getUserInput("""
                 By what arcane method shall this dish be prepared? 
                 1. Enchanted within the fiery depths of the oven, either baked or roasted.
                 2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
                 3. An ancient ritual, known only to seasoned culinary wizards... Or just a simple salad.
                 """);
-        String newRecipeCookingMethod = ScannerManagement.getUserInput();
 
         switch (newRecipeCookingMethod) {
             case "1" -> {
-                String ovenRecipeProtein = ScannerManagement.getUserInput();
-                String ovenTime = ScannerManagement.getUserInput();
-                String ovenTemp = ScannerManagement.getUserInput();
-                String isSweet = ScannerManagement.getUserInput();
-                new OvenRecipe(newRecipeName, ovenRecipeProtein, Integer.parseInt(ovenTime),
-                        Integer.parseInt(ovenTemp), Boolean.parseBoolean(isSweet));
+                String ovenRecipeProtein = InputParser.getUserInput("Which source of power energizes this recipe? " +
+                        "The strength of beasts, the wealth of the seas, or the blessings of the soil?");
+                int ovenTimeMinute = InputParser.getValidatedIntegerInput(
+                        "",10,60);
+                int ovenTempCelcius = InputParser.getValidatedIntegerInput(
+                        "",50,300);
+                boolean isSweet = InputParser.getValidatedBooleanInput("Are we preparing to summon " +
+                        "a treat from the realms of sweetness and indulgence?");
+                new OvenRecipe(newRecipeName, ovenRecipeProtein, ovenTimeMinute, ovenTempCelcius, isSweet);
             }
-            case "2" -> {}
-            case "3" -> {}
+            case "2" -> {
+                String stoveRecipeProtein = InputParser.getUserInput("What sustenance shall fuel this creation? " +
+                        "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts");
+                String stoveHeatStrength = InputParser.getUserInput("What strength of fire do you summon for " +
+                        "this dish—gentle embers, a steady flame, or a roaring inferno?");
+                new StoveRecipe(newRecipeName, stoveRecipeProtein, stoveHeatStrength);
+            }
+            case "3" -> {
+                String anyMethodProtein = InputParser.getUserInput("What sustenance shall fuel this creation? " +
+                        "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts?");
+                new AnyMethodRecipe(newRecipeName, anyMethodProtein);
+            }
             default -> System.out.println(RandomizedPrompt.getAskForValidInput());
         }
 
@@ -43,11 +50,10 @@ public class CreateRecipe {
         boolean addingIngredient = false;
 
         do {
-            System.out.print("""
+            String input = InputParser.getUserInput("""
                     Pray tell, what be the name of the ingredient, along with its quantity and unit of measure?
                     Speak it in one breath, separated by space. (e.g. sugar 20 gram, milk 1.5 dl)
                     """);
-            String input = ScannerManagement.getUserInput();
             String[] collectIngredient = input.split("\\s+");
 
             if (collectIngredient.length == 3) {
@@ -71,20 +77,17 @@ public class CreateRecipe {
         boolean addingInstruction = false;
 
         do {
-            System.out.println("Recite the cooking instructions, one task at a time, as though casting a spell.");
-            String newInstruction = ScannerManagement.getUserInput();
+            String newInstruction = InputParser.getUserInput("Recite the cooking instructions, " +
+                    "one task at a time, as though casting a spell.");
             recipe.addInstruction(newInstruction);
             addingInstruction = shouldContinueAdding("Shall we weave more instructions into this culinary ritual?");
         } while (addingInstruction);
     }
 
-
-
     private static boolean shouldContinueAdding(String prompt) {
         String continueToAdd;
         do {
-            System.out.println(prompt);
-            continueToAdd = ScannerManagement.getUserInput();
+            continueToAdd = InputParser.getUserInput(prompt);
             if (!continueToAdd.equals("1") && !continueToAdd.equals("2")){
                 System.out.println(RandomizedPrompt.getAskForValidInput());
             }

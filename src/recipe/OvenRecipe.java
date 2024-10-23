@@ -1,14 +1,14 @@
 package recipe;
 
 public class OvenRecipe extends Recipe {
-    protected int ovenTimeMinutes;
-    protected int ovenTemperature;
+    protected int ovenTimeInMinutes;
+    protected int ovenTemperatureInCelcius;
     protected boolean isSweet;
 
-    public OvenRecipe(String name, String proteinCategory, int ovenTimeMinutes, int ovenTemperature, boolean isSweet) {
+    public OvenRecipe(String name, String proteinCategory, int ovenTimeInMinutes, int ovenTemperatureInCelcius, boolean isSweet) {
         super(name, proteinCategory);
-        this.ovenTimeMinutes = ovenTimeMinutes;
-        this.ovenTemperature = ovenTemperature;
+        this.ovenTimeInMinutes = ovenTimeInMinutes;
+        this.ovenTemperatureInCelcius = ovenTemperatureInCelcius;
         this.isSweet = isSweet;
     }
 }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.*;
 
-public class FileManagement {
+public class FileOperators {
 
     public static boolean createPath(Path pathName){
         try {

@@ -4,15 +4,15 @@ import service.RandomizedPrompt;
 
 import java.util.Scanner;
 
-public class ScannerManagement {
+public class InputParser {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static String getUserInput() {
+    public static String getUserInput(String prompt) {
         return sc.nextLine();
     }
 
-    public static int getValidatedCookingTime(String prompt, int min, int max) {
+    public static int getValidatedIntegerInput(String prompt, int min, int max) {
         int input;
         while (true) {
             System.out.println(prompt);
@@ -33,7 +33,7 @@ public class ScannerManagement {
         return input;
     }
 
-    public static boolean getIsDesert(String prompt) {
+    public static boolean getValidatedBooleanInput(String prompt) {
         while (true) {
             System.out.println(prompt + "\n1. Yes\n2. No\nCast your choice, and let fate be decided: ");
             String input = sc.nextLine().trim();
