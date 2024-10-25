@@ -15,6 +15,14 @@ public abstract class Recipe {
         this.proteinCategory = proteinCategory;
     }
 
+    public void assignName(String recipeName) {
+        this.name = recipeName;
+    }
+
+    public String getRecipeName() {
+        return name;
+    }
+
     public void assignCategory(String mainProteinType){
         this.proteinCategory = mainProteinType;
     }

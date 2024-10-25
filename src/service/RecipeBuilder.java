@@ -3,16 +3,18 @@ package service;
 import recipe.*;
 import utility.InputScanner;
 
-public class CreateRecipe {
+public class RecipeBuilder {
 
-    public static void delegateRecipeNameAndClass(Recipe recipe) {
+    public static Recipe createRecipeFromUserInput() {
         String newRecipeName = InputScanner.getUserInput("Bestow upon this creation a name worthy of its taste and power! > ");
         String newRecipeCookingMethod = InputScanner.getUserInput("""
-                By what arcane method shall this dish be prepared? 
+                By what arcane method shall this dish be prepared?
                 1. Enchanted within the fiery depths of the oven, either baked or roasted.
                 2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
                 3. An ancient ritual, known only to seasoned culinary wizards... Or just a simple salad.
                 """);
+
+        Recipe recipe = null;
 
         switch (newRecipeCookingMethod) {
             case "1" -> {
@@ -24,22 +26,28 @@ public class CreateRecipe {
                         "",50,300);
                 boolean isSweet = InputScanner.getValidatedBooleanInput("Are we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
-                new OvenRecipe(newRecipeName, ovenRecipeProtein, ovenTimeMinute, ovenTempCelcius, isSweet);
+
+                recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName, ovenRecipeProtein,
+                        ovenTimeMinute, ovenTempCelcius, isSweet, null);
             }
             case "2" -> {
                 String stoveRecipeProtein = InputScanner.getUserInput("What sustenance shall fuel this creation? " +
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts");
                 String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
                         "this dish—gentle embers, a steady flame, or a roaring inferno?");
-                new StoveRecipe(newRecipeName, stoveRecipeProtein, stoveHeatStrength);
+                recipe = RecipeFactory.createRecipe(CookingMethod.STOVE, newRecipeName, stoveRecipeProtein,
+                        0, 0, false, stoveHeatStrength);
             }
             case "3" -> {
                 String anyMethodProtein = InputScanner.getUserInput("What sustenance shall fuel this creation? " +
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts?");
-                new AnyMethodRecipe(newRecipeName, anyMethodProtein);
+
+                recipe = RecipeFactory.createRecipe(CookingMethod.ANY_METHOD, newRecipeName, anyMethodProtein,
+                        0,0,false,null);
             }
             default -> System.out.println(RandomizedPrompt.getAskForValidInput());
         }
+        return recipe;
     }
 
     public static void addIngredientsToRecipe(Recipe recipe) {

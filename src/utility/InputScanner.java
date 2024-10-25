@@ -4,7 +4,7 @@ import service.RandomizedPrompt;
 
 import java.util.Scanner;
 
-public class InputParser {
+public class InputScanner {
 
     private static final Scanner sc = new Scanner(System.in);
 
