@@ -7,12 +7,14 @@ public abstract class Recipe {
 
     private String name;
     private String proteinCategory;
-    private List<Ingredient> ingredientList = new ArrayList<>();
-    private List<String> instructionsList = new ArrayList<>();
+    private List<Ingredient> ingredientList;
+    private List<String> instructionsList;
 
     public Recipe(String name, String proteinCategory) {
         this.name = name;
         this.proteinCategory = proteinCategory;
+        this.ingredientList = new ArrayList<>();
+        this.instructionsList = new ArrayList<>();
     }
 
     public void assignName(String recipeName) {

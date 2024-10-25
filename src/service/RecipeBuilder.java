@@ -1,57 +1,76 @@
 package service;
 
 import recipe.*;
+import utility.DisplayFormatter;
 import utility.InputScanner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeBuilder {
 
-    public static Recipe createRecipeFromUserInput() {
-        String newRecipeName = InputScanner.getUserInput("Bestow upon this creation a name worthy of its taste and power! > ");
+    public static void createRecipeFromUserInput() {
+        System.out.println("Did this start?"); // code check
+        String newRecipeName = InputScanner.getUserInput("Bestow upon this creation a name " +
+                "worthy of its taste and power!\nThis mighty dish shall be called: ");
         String newRecipeCookingMethod = InputScanner.getUserInput("""
-                By what arcane method shall this dish be prepared?
+                \nBy what arcane method shall this dish be prepared?
                 1. Enchanted within the fiery depths of the oven, either baked or roasted.
                 2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
                 3. An ancient ritual, known only to seasoned culinary wizards... Or just a simple salad.
-                """);
+                Make thy choice (1-3):\s""");
 
         Recipe recipe = null;
 
         switch (newRecipeCookingMethod) {
             case "1" -> {
-                String ovenRecipeProtein = InputScanner.getUserInput("Which source of power energizes this recipe? " +
-                        "The strength of beasts, the wealth of the seas, or the blessings of the soil?");
+                String ovenRecipeProtein = InputScanner.getUserInput("""                        
+                        Which source of power energizes this recipe?
+                        The strength of beasts, the wealth of the seas, or the blessings of the soil?
+                        Name of the main protein:\s""");
+                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
+                List<String> newInstructions = addInstructionsToRecipe(null);
                 int ovenTimeMinute = InputScanner.getValidatedIntegerInput(
                         "",10,60);
-                int ovenTempCelcius = InputScanner.getValidatedIntegerInput(
+                int ovenTempCelsius = InputScanner.getValidatedIntegerInput(
                         "",50,300);
                 boolean isSweet = InputScanner.getValidatedBooleanInput("Are we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
 
-                recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName, ovenRecipeProtein,
-                        ovenTimeMinute, ovenTempCelcius, isSweet, null);
+                recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName,
+                        ovenRecipeProtein, newIngredient, newInstructions,
+                        ovenTimeMinute, ovenTempCelsius, isSweet, null);
             }
             case "2" -> {
                 String stoveRecipeProtein = InputScanner.getUserInput("What sustenance shall fuel this creation? " +
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts");
                 String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
                         "this dish—gentle embers, a steady flame, or a roaring inferno?");
-                recipe = RecipeFactory.createRecipe(CookingMethod.STOVE, newRecipeName, stoveRecipeProtein,
+                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
+                List<String> newInstructions = addInstructionsToRecipe(null);
+                recipe = RecipeFactory.createRecipe(CookingMethod.STOVE, newRecipeName,
+                        stoveRecipeProtein, newIngredient, newInstructions,
                         0, 0, false, stoveHeatStrength);
             }
             case "3" -> {
                 String anyMethodProtein = InputScanner.getUserInput("What sustenance shall fuel this creation? " +
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts?");
-
-                recipe = RecipeFactory.createRecipe(CookingMethod.ANY_METHOD, newRecipeName, anyMethodProtein,
+                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
+                List<String> newInstructions = addInstructionsToRecipe(null);
+                recipe = RecipeFactory.createRecipe(CookingMethod.ANY_METHOD, newRecipeName,
+                        anyMethodProtein, newIngredient, newInstructions,
                         0,0,false,null);
             }
             default -> System.out.println(RandomizedPrompt.getAskForValidInput());
         }
-        return recipe;
+        System.out.println(DisplayFormatter.getFormattedRecipe(recipe));
     }
 
-    public static void addIngredientsToRecipe(Recipe recipe) {
-        boolean addingIngredient = false;
+
+
+    public static List<Ingredient> addIngredientsToRecipe(Recipe recipe) {
+        List<Ingredient> ingredients = new ArrayList<>();
+        boolean addingIngredient;
 
         do {
             String input = InputScanner.getUserInput("""
@@ -73,10 +92,13 @@ public class RecipeBuilder {
             addingIngredient = shouldContinueAdding("Wouldst thou add another ingredient to this concoction?");
 
         } while (addingIngredient);
+
+        return ingredients;
     }
 
-    public static void addInstructionsToRecipe(Recipe recipe) {
-        boolean addingInstruction = false;
+    public static List<String> addInstructionsToRecipe(Recipe recipe) {
+        List<String> instructions = new ArrayList<>();
+        boolean addingInstruction;
 
         do {
             String newInstruction = InputScanner.getUserInput("Recite the cooking instructions, " +
@@ -84,6 +106,7 @@ public class RecipeBuilder {
             recipe.addInstruction(newInstruction);
             addingInstruction = shouldContinueAdding("Shall we weave more instructions into this culinary ritual?");
         } while (addingInstruction);
+        return instructions;
     }
 
     private static boolean shouldContinueAdding(String prompt) {

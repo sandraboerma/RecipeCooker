@@ -9,6 +9,7 @@ public class InputScanner {
     private static final Scanner sc = new Scanner(System.in);
 
     public static String getUserInput(String prompt) {
+        System.out.print(prompt);
         return sc.nextLine();
     }
 
@@ -22,7 +23,7 @@ public class InputScanner {
                     break;
                 } else {
                     System.out.println("""
-                            Alas, that time defies the laws of the culinary realm. 
+                            Alas, that time defies the laws of the culinary realm.
                             Please provide a more suitable cooking duration.
                             """);
                 }
@@ -35,7 +36,7 @@ public class InputScanner {
 
     public static boolean getValidatedBooleanInput(String prompt) {
         while (true) {
-            System.out.println(prompt + "\n1. Yes\n2. No\nCast your choice, and let fate be decided: ");
+            System.out.print(prompt + "\n1. Yes\n2. No\nCast your choice, and let fate be decided: ");
             String input = sc.nextLine().trim();
             switch (input) {
                 case "1" -> { return true; }

@@ -1,12 +1,15 @@
 import service.RandomizedPrompt;
 import service.MenuHub;
+import service.RecipeBuilder;
+import utility.DisplayFormatter;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("\nRecipeCooker is being prepared...\n");
         System.out.println(RandomizedPrompt.getGreetings());
         System.out.println(MenuHub.getFormattedMainMenu());
-        System.out.println(MenuHub.getFormattedCreateRecipeMenu());
+//        System.out.println(MenuHub.getFormattedCreateRecipeMenu());
+        RecipeBuilder.createRecipeFromUserInput();
 
     /*
     Short workflow description

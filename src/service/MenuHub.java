@@ -1,5 +1,7 @@
 package service;
 
+import utility.DisplayFormatter;
+
 import java.util.TreeMap;
 
 public class MenuHub {
@@ -50,12 +52,12 @@ public class MenuHub {
     }
 
     public static String getFormattedMainMenu(){
-        return formatMenu(getMainMenu()) + "\nLet's start this visit with > ";
+        return DisplayFormatter.getFormattedMenu(getMainMenu()) + "\nLet's start this visit with > ";
     }
 
     public static String getFormattedCreateRecipeMenu() {
         return "\nAwesome, then let's cook up some recipe! What would you like to do first?\n\n" +
-                formatMenu(getCreateRecipeMenu()) + "\nI would like to: ";
+                DisplayFormatter.getFormattedMenu(getCreateRecipeMenu()) + "\nI would like to: ";
     }
 
 
