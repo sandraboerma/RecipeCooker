@@ -5,12 +5,10 @@ import utility.DisplayFormatter;
 import utility.InputScanner;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeBuilder {
 
     public static void createRecipeFromUserInput() {
-        System.out.println("Did this start?"); // code check
         String newRecipeName = InputScanner.getUserInput("Bestow upon this creation a name " +
                 "worthy of its taste and power!\nThis mighty dish shall be called: ");
         String newRecipeCookingMethod = InputScanner.getUserInput("""
@@ -26,10 +24,7 @@ public class RecipeBuilder {
             case "1" -> {
                 String ovenRecipeProtein = InputScanner.getUserInput("""                        
                         Which source of power energizes this recipe?
-                        The strength of beasts, the wealth of the seas, or the blessings of the soil?
-                        Name of the main protein:\s""");
-                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
-                List<String> newInstructions = addInstructionsToRecipe(null);
+                        This dish will be made by chicken... Or wait, beef... Ah, never mind, let's go with:\s""");
                 int ovenTimeMinute = InputScanner.getValidatedIntegerInput(
                         "",10,60);
                 int ovenTempCelsius = InputScanner.getValidatedIntegerInput(
@@ -38,7 +33,7 @@ public class RecipeBuilder {
                         "a treat from the realms of sweetness and indulgence?");
 
                 recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName,
-                        ovenRecipeProtein, newIngredient, newInstructions,
+                        ovenRecipeProtein, new ArrayList<>(), new ArrayList<>(),
                         ovenTimeMinute, ovenTempCelsius, isSweet, null);
             }
             case "2" -> {
@@ -46,67 +41,64 @@ public class RecipeBuilder {
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts");
                 String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
                         "this dish—gentle embers, a steady flame, or a roaring inferno?");
-                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
-                List<String> newInstructions = addInstructionsToRecipe(null);
                 recipe = RecipeFactory.createRecipe(CookingMethod.STOVE, newRecipeName,
-                        stoveRecipeProtein, newIngredient, newInstructions,
+                        stoveRecipeProtein, new ArrayList<>(), new ArrayList<>(),
                         0, 0, false, stoveHeatStrength);
             }
             case "3" -> {
                 String anyMethodProtein = InputScanner.getUserInput("What sustenance shall fuel this creation? " +
                         "Is it the flesh of beasts, bounty from the sea, or nature's verdant gifts?");
-                List<Ingredient> newIngredient = addIngredientsToRecipe(null);
-                List<String> newInstructions = addInstructionsToRecipe(null);
                 recipe = RecipeFactory.createRecipe(CookingMethod.ANY_METHOD, newRecipeName,
-                        anyMethodProtein, newIngredient, newInstructions,
+                        anyMethodProtein, new ArrayList<>(), new ArrayList<>(),
                         0,0,false,null);
             }
             default -> System.out.println(RandomizedPrompt.getAskForValidInput());
         }
-        System.out.println(DisplayFormatter.getFormattedRecipe(recipe));
+
+        if (recipe != null) {
+            addIngredientsToRecipe(recipe);
+            addInstructionsToRecipe(recipe);
+            System.out.println(DisplayFormatter.getFormattedRecipe(recipe));
+        }
     }
 
-
-
-    public static List<Ingredient> addIngredientsToRecipe(Recipe recipe) {
-        List<Ingredient> ingredients = new ArrayList<>();
+    public static void addIngredientsToRecipe(Recipe recipe) {
         boolean addingIngredient;
 
         do {
-            String input = InputScanner.getUserInput("""
-                    Pray tell, what be the name of the ingredient, along with its quantity and unit of measure?
-                    Speak it in one breath, separated by space. (e.g. sugar 20 gram, milk 1.5 dl)
-                    """);
-            String[] collectIngredient = input.split("\\s+");
+            String name = InputScanner.getUserInput("""
+                    Pray tell, what be the name of the ingredient?
+                    Speak its name, O wise one:\s""").trim();
+            String unit = InputScanner.getUserInput("""
+                    By what measure shall we quantify this ingredient?
+                    (dl? hg? grams? cc? ounces)?:\s""").trim();
+            double quantity = InputScanner.getValidatedDoubleInput("""
+                    Tell me, how much of this ingredient dost thou require?:\s""");
 
-            if (collectIngredient.length == 3) {
-                String name = collectIngredient[0].trim();
-                double quantity = Double.parseDouble(collectIngredient[1].trim());
-                String unit = collectIngredient[2].trim();
-                Ingredient newIngredient = new Ingredient(name, quantity, unit);
-                recipe.addIngredient(newIngredient);
-            } else {
-                System.out.println(RandomizedPrompt.getAskForValidInput());
-            }
-
-            addingIngredient = shouldContinueAdding("Wouldst thou add another ingredient to this concoction?");
+            Ingredient newIngredient = new Ingredient(name, unit, quantity);
+            recipe.addIngredient(newIngredient);
+            addingIngredient = shouldContinueAdding("""
+                    Wouldst thou add another ingredient to this concoction?
+                    1. Yes
+                    2. No
+                    Cast your choice, and let fate be decided:\s""");
 
         } while (addingIngredient);
-
-        return ingredients;
     }
 
-    public static List<String> addInstructionsToRecipe(Recipe recipe) {
-        List<String> instructions = new ArrayList<>();
+    public static void addInstructionsToRecipe(Recipe recipe) {
         boolean addingInstruction;
 
         do {
             String newInstruction = InputScanner.getUserInput("Recite the cooking instructions, " +
-                    "one task at a time, as though casting a spell.");
+                    "one task at a time, as though casting a spell: ");
             recipe.addInstruction(newInstruction);
-            addingInstruction = shouldContinueAdding("Shall we weave more instructions into this culinary ritual?");
+            addingInstruction = shouldContinueAdding("""
+                    \nShall we weave more instructions into this culinary ritual?
+                    1. Yes
+                    2. No
+                    Cast your choice, and let fate be decided:\s""");
         } while (addingInstruction);
-        return instructions;
     }
 
     private static boolean shouldContinueAdding(String prompt) {
