@@ -23,13 +23,13 @@ public class RecipeBuilder {
         switch (newRecipeCookingMethod) {
             case "1" -> {
                 String ovenRecipeProtein = InputScanner.getUserInput("""                        
-                        Which source of power energizes this recipe?
-                        This dish will be made by chicken... Or wait, beef... Ah, never mind, let's go with:\s""");
+                        \nWhich source of power energizes this recipe?
+                        This dish will be made by chicken... Or wait, let's go with:\s""");
                 int ovenTimeMinute = InputScanner.getValidatedIntegerInput(
-                        "",10,60);
+                        "\nHow many minutes must this dish endure the flames of the oven:\s",5,100);
                 int ovenTempCelsius = InputScanner.getValidatedIntegerInput(
-                        "",50,300);
-                boolean isSweet = InputScanner.getValidatedBooleanInput("Are we preparing to summon " +
+                        "\nTo what degree in celsius must the fires of the oven burn?:\s",50,300);
+                boolean isSweet = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
 
                 recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName,
@@ -74,14 +74,10 @@ public class RecipeBuilder {
                     (dl? hg? grams? cc? ounces)?:\s""").trim();
             double quantity = InputScanner.getValidatedDoubleInput("""
                     Tell me, how much of this ingredient dost thou require?:\s""");
-
             Ingredient newIngredient = new Ingredient(name, unit, quantity);
             recipe.addIngredient(newIngredient);
-            addingIngredient = shouldContinueAdding("""
-                    Wouldst thou add another ingredient to this concoction?
-                    1. Yes
-                    2. No
-                    Cast your choice, and let fate be decided:\s""");
+            addingIngredient = InputScanner.getValidatedBooleanInput("""
+                    \nWouldst thou add another ingredient to this concoction?\s""");
 
         } while (addingIngredient);
     }
@@ -93,23 +89,8 @@ public class RecipeBuilder {
             String newInstruction = InputScanner.getUserInput("Recite the cooking instructions, " +
                     "one task at a time, as though casting a spell: ");
             recipe.addInstruction(newInstruction);
-            addingInstruction = shouldContinueAdding("""
-                    \nShall we weave more instructions into this culinary ritual?
-                    1. Yes
-                    2. No
-                    Cast your choice, and let fate be decided:\s""");
+            addingInstruction = InputScanner.getValidatedBooleanInput("""
+                    \nShall we weave more instructions into this culinary ritual?\s""");
         } while (addingInstruction);
-    }
-
-    private static boolean shouldContinueAdding(String prompt) {
-        String continueToAdd;
-        do {
-            continueToAdd = InputScanner.getUserInput(prompt);
-            if (!continueToAdd.equals("1") && !continueToAdd.equals("2")){
-                System.out.println(RandomizedPrompt.getAskForValidInput());
-            }
-        } while (!continueToAdd.equals("1") && !continueToAdd.equals("2"));
-
-        return continueToAdd.equals("1");
     }
 }

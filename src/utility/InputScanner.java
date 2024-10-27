@@ -38,8 +38,7 @@ public class InputScanner {
                 } else {
                     System.out.println("""
                             Alas, that time defies the laws of the culinary realm.
-                            Please provide a more suitable cooking duration.
-                            """);
+                            Please provide a more suitable cooking duration.""");
                 }
             } catch (NumberFormatException e) {
                 System.out.println(RandomizedPrompt.getAskForValidInput());
