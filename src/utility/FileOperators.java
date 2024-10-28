@@ -11,7 +11,7 @@ public class FileOperators {
     public static boolean createPath(Path pathName){
         try {
             Files.createFile(pathName);
-            System.out.println("Recipe " + pathName + " created.");
+            System.out.println(pathName + " created.");
             return true;
         } catch (FileAlreadyExistsException e) {
             System.out.println("A recipe with the name " + pathName + " already exists.");
@@ -30,21 +30,16 @@ public class FileOperators {
         }
     }
 
-    public static boolean writeToPath(Path pathName){
+    public static void writeToPath(Path pathName, String formattedRecipe){
         try (PrintWriter writeToPath = new PrintWriter(new FileWriter(pathName.toFile(),true))) {
-            writeToPath.println("This text is a placeholder.");
-            //@TODO need to evaluate how to execute writing options.
-            return true;
+            writeToPath.println(formattedRecipe);
         } catch (FileNotFoundException e) {
             System.out.println("Could not find the recipe.");
-            return true;
         }  catch (AccessDeniedException e) {
             System.out.println("Access denied. Unable to open " + pathName);
-            return true;
         } catch (IOException e) {
             //e.printStackTrace();
             System.out.println("An I/O error occurred: " + e);
-            return false;
         }
     }
 
@@ -81,14 +76,4 @@ public class FileOperators {
             return false;
         }
     }
-
-    //@TODO Optional - only attempt this if the main program is completed.
-    //@TODO Add code for modifying a file.
-    //@TODO Validate file modification logic.
-    //@TODO Identify and handle possible exceptions
-//    public static boolean modifyPath(Path pathName){
-//        System.out.println("Init method, code not implemented. Method expected to fail.");
-//        return false;
-//    }
-
 }

@@ -59,6 +59,7 @@ public class RecipeBuilder {
             RecipeEnricher.ingredients(recipe);
             RecipeEnricher.instructions(recipe);
             System.out.println(DisplayFormatter.getFormattedRecipe(recipe));
+            RecipeFiler.saveRecipe(recipe);
         }
     }
 }
