@@ -4,7 +4,7 @@ import recipe.Ingredient;
 import recipe.Recipe;
 import utility.InputScanner;
 
-public class AddToRecipe {
+public class RecipeEnricher {
     public static void ingredients(Recipe recipe) {
         boolean addingIngredient;
 

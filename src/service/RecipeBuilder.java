@@ -26,9 +26,9 @@ public class RecipeBuilder {
                         \nWhich source of power energizes this recipe?
                         This dish will be made by chicken... Or wait, let's go with:\s""");
                 int ovenTimeMinute = InputScanner.getValidatedIntegerInput(
-                        "\nHow many minutes must this dish endure the flames of the oven:\s",5,100);
+                        "\nHow many minutes must this dish endure the flames of the oven: ",5,100);
                 int ovenTempCelsius = InputScanner.getValidatedIntegerInput(
-                        "\nTo what degree in celsius must the fires of the oven burn?:\s",50,300);
+                        "\nTo what degree in celsius must the fires of the oven burn?: ",50,300);
                 boolean isSweet = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
 
@@ -56,8 +56,8 @@ public class RecipeBuilder {
         }
 
         if (recipe != null) {
-            AddToRecipe.ingredients(recipe);
-            AddToRecipe.instructions(recipe);
+            RecipeEnricher.ingredients(recipe);
+            RecipeEnricher.instructions(recipe);
             System.out.println(DisplayFormatter.getFormattedRecipe(recipe));
         }
     }
