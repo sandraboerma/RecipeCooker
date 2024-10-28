@@ -52,8 +52,8 @@ public class InputScanner {
             System.out.print(prompt + "\n1. Yes\n2. No\nCast your choice, and let fate be decided: ");
             String booleanInput = input.nextLine().trim();
             switch (booleanInput) {
-                case "1" -> { return true; }
-                case "2" -> { return false; }
+                case "1", "yes", "Yes", "YES" -> { return true; }
+                case "2", "no", "No", "NO" -> { return false; }
                 default -> System.out.println(RandomizedPrompt.getAskForValidInput());
             }
         }

@@ -40,17 +40,6 @@ public class MenuHub {
         return createRecipeMenu;
     }
 
-    private static String formatMenu(TreeMap<Integer, String> menu){
-        StringBuilder menuString = new StringBuilder();
-        for(Integer key : menu.keySet()){
-            menuString.append(key)
-                    .append(": ")
-                    .append(menu.get(key))
-                    .append("\n");
-        }
-        return menuString.toString();
-    }
-
     public static String getFormattedMainMenu(){
         return DisplayFormatter.getFormattedMenu(getMainMenu()) + "\nLet's start this visit with > ";
     }
@@ -59,6 +48,4 @@ public class MenuHub {
         return "\nAwesome, then let's cook up some recipe! What would you like to do first?\n\n" +
                 DisplayFormatter.getFormattedMenu(getCreateRecipeMenu()) + "\nI would like to: ";
     }
-
-
 }
