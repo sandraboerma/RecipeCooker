@@ -1,6 +1,7 @@
 import service.RandomizedPrompt;
 import service.MenuHub;
 import service.RecipeBuilder;
+import service.RecipeFiler;
 import utility.DisplayFormatter;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
         System.out.println(MenuHub.getFormattedMainMenu());
 //        System.out.println(MenuHub.getFormattedCreateRecipeMenu());
         RecipeBuilder.createRecipeFromUserInput();
+        RecipeFiler.displayExistingRecipes(); // to display existing recipes
 
     /*
     Short workflow description

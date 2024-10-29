@@ -5,6 +5,7 @@ import utility.DisplayFormatter;
 import utility.FileOperators;
 
 import java.nio.file.Path;
+import java.util.List;
 
 public class RecipeFiler {
     private static final String RECIPE_DIRECTORY = "recipes/";
@@ -16,6 +17,19 @@ public class RecipeFiler {
 
         if (FileOperators.createPath(recipePath)) {
             FileOperators.writeToPath(recipePath, formattedRecipe);
+        }
+    }
+
+    public static void displayExistingRecipes() {
+        List<Path> recipeFiles = FileOperators.listRecipeFiles();
+        for (Path recipeFile : recipeFiles) {
+            String recipeNameToDisplay = FileOperators.readRecipeName(recipeFile);
+            if (recipeNameToDisplay != null) {
+                String recipeNameDisplayed = DisplayFormatter.formatFileNameForDisplay(recipeFile
+                        .getFileName()
+                        .toString());
+                System.out.println("- " + recipeNameDisplayed);
+            }
         }
     }
 }
