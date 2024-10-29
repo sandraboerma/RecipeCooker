@@ -18,7 +18,6 @@ public class MenuHub {
     private static void initializeMain(){
         mainMenu.put(1, "Create Recipe");
         mainMenu.put(2, "View Recipe");
-        //mainMenu.put(3, "Modify Recipe");
         mainMenu.put(3, "Delete Recipe");
         mainMenu.put(4, "Exit");
     }
