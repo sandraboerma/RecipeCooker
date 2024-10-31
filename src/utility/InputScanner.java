@@ -21,7 +21,7 @@ public class InputScanner {
                 doubleInput = Double.parseDouble(input.nextLine().trim());
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Ah, that doesn't seem like a proper amount. Pray, try again!");
+                System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() + AnsiPalette.RESET);
             }
         }
         return doubleInput;
@@ -36,12 +36,10 @@ public class InputScanner {
                 if (intInput >= min && intInput <= max) {
                     break;
                 } else {
-                    System.out.println("""
-                            Alas, that time defies the laws of the culinary realm.
-                            Please provide a more suitable cooking duration.""");
+                    System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() + AnsiPalette.RESET);
                 }
             } catch (NumberFormatException e) {
-                System.out.println(PromptProvider.getAskForValidInput());
+                System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() + AnsiPalette.RESET);
             }
         }
         return intInput;
@@ -54,7 +52,8 @@ public class InputScanner {
             switch (booleanInput) {
                 case "1", "yes", "Yes", "YES" -> { return true; }
                 case "2", "no", "No", "NO" -> { return false; }
-                default -> System.out.println(PromptProvider.getAskForValidInput());
+                default -> System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() +
+                        AnsiPalette.RESET);
             }
         }
     }

@@ -12,8 +12,9 @@ public class RecipeBuilder {
     public static void createRecipeFromUserInput() {
         String newRecipeName;
         do {
-            newRecipeName = InputScanner.getUserInput("Bestow upon this creation a name " +
-                    "worthy of its taste and power!\nThe name of this dish is: ");
+            newRecipeName = InputScanner.getUserInput("""
+                    Bestow upon this creation a name worthy of its taste and power!
+                    The name of this dish is:\s""");
             if (RecipeFiler.recipeExists(newRecipeName)) {
                 System.out.println("A recipe with this name already exists! Please choose a different name.\n");
             }

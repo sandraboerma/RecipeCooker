@@ -7,7 +7,8 @@ public class MenuServices {
     public static void navigateMainMenu() {
         boolean exitMainMenu = false;
         while (!exitMainMenu) {
-            System.out.println(PromptProvider.getFormattedMainMenu());
+            System.out.println("\nChoose an option to continue...\n" +
+                    PromptProvider.getFormattedMainMenu());
             int mainMenuChoice = InputScanner.getValidatedIntegerInput("What would you like to do (1-4): ",1,4);
 
             switch (mainMenuChoice) {

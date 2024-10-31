@@ -1,6 +1,7 @@
 package service;
 
 import recipe.Recipe;
+import utility.AnsiPalette;
 import utility.DisplayFormatter;
 import utility.FileOperators;
 
@@ -34,6 +35,10 @@ public class RecipeFiler {
                         .getFileName()
                         .toString());
                 System.out.println("- " + recipeNameDisplayed);
+            } else {
+                System.out.println(AnsiPalette.PINK +
+                        "\nNo recipes have been created yet. Please add some to get started.\n"
+                        + AnsiPalette.RESET);
             }
         }
     }
