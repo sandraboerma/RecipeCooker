@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,9 @@ public class FileOperators {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(RECIPE_DIRECTORY), "*.txt")) {
             for (Path path : stream) {
                 recipeFiles.add(path);
+            }
+            if (recipeFiles.isEmpty()) {
+                System.out.println("No recipes have been created yet. Please add some to get started.");
             }
         } catch (IOException e) {
             System.out.println("An I/O error occurred: " + e.getMessage());

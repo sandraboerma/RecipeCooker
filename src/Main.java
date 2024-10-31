@@ -10,8 +10,8 @@ public class Main {
         System.out.println(RandomizedPrompt.getGreetings());
         System.out.println(MenuHub.getFormattedMainMenu());
 //        System.out.println(MenuHub.getFormattedCreateRecipeMenu());
+        RecipeFiler.displayExistingRecipes(); // call to display existing recipes
         RecipeBuilder.createRecipeFromUserInput();
-        RecipeFiler.displayExistingRecipes(); // to display existing recipes
 
     /*
     Short workflow description

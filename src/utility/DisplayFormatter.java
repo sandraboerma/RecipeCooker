@@ -20,6 +20,7 @@ public class DisplayFormatter {
 
     private static String formatRecipe(Recipe recipe){
         StringBuilder recipeString = new StringBuilder();
+        System.out.println("\n");
         recipeString.append(recipe.getRecipeName())
                 .append("\n------------------------------------------------------------\n")
                 .append("Main Protein Type: ")
