@@ -67,7 +67,8 @@ public class FileOperators {
                 recipeFiles.add(path);
             }
             if (recipeFiles.isEmpty()) {
-                System.out.println("No recipes have been created yet. Please add some to get started.");
+                System.out.println(AnsiPalette.ORANGE +
+                        "\nNo recipes have been created yet. Please add some to get started.\n" + AnsiPalette.RESET);
             }
         } catch (IOException e) {
             System.out.println("An I/O error occurred: " + e.getMessage());

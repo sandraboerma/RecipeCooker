@@ -31,14 +31,9 @@ public class RecipeFiler {
         for (Path recipeFile : recipeFiles) {
             String recipeNameToDisplay = FileOperators.readRecipeName(recipeFile);
             if (recipeNameToDisplay != null) {
-                String recipeNameDisplayed = DisplayFormatter.formatFileNameForDisplay(recipeFile
-                        .getFileName()
-                        .toString());
+                String recipeNameDisplayed = DisplayFormatter.formatFileNameForDisplay(
+                        recipeFile.getFileName().toString());
                 System.out.println("- " + recipeNameDisplayed);
-            } else {
-                System.out.println(AnsiPalette.PINK +
-                        "\nNo recipes have been created yet. Please add some to get started.\n"
-                        + AnsiPalette.RESET);
             }
         }
     }

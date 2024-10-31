@@ -8,10 +8,19 @@ public class InputScanner {
 
     private static final Scanner input = new Scanner(System.in);
 
-    public static String getUserInput(String prompt) {
+public static String getUserInput(String prompt) {
+    String userInput;
+    while (true) {
         System.out.print(prompt);
-        return input.nextLine();
+        userInput = input.nextLine().trim();
+        if (!userInput.isEmpty() && userInput.matches(".*[a-zA-Z].*")) {
+            break;
+        } else {
+            System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() + AnsiPalette.RESET);
+        }
     }
+    return userInput;
+}
 
     public static double getValidatedDoubleInput(String prompt) {
         double doubleInput;
