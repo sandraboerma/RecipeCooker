@@ -58,7 +58,7 @@ public class RecipeBuilder {
                         anyMethodProtein, new ArrayList<>(), new ArrayList<>(),
                         0,0,false,null);
             }
-            default -> System.out.println(RandomizedPrompt.getAskForValidInput());
+            default -> System.out.println(PromptProvider.getAskForValidInput());
         }
 
         if (recipe != null) {

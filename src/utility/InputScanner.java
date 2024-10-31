@@ -1,6 +1,6 @@
 package utility;
 
-import service.RandomizedPrompt;
+import service.PromptProvider;
 
 import java.util.Scanner;
 
@@ -41,7 +41,7 @@ public class InputScanner {
                             Please provide a more suitable cooking duration.""");
                 }
             } catch (NumberFormatException e) {
-                System.out.println(RandomizedPrompt.getAskForValidInput());
+                System.out.println(PromptProvider.getAskForValidInput());
             }
         }
         return intInput;
@@ -54,7 +54,7 @@ public class InputScanner {
             switch (booleanInput) {
                 case "1", "yes", "Yes", "YES" -> { return true; }
                 case "2", "no", "No", "NO" -> { return false; }
-                default -> System.out.println(RandomizedPrompt.getAskForValidInput());
+                default -> System.out.println(PromptProvider.getAskForValidInput());
             }
         }
     }
