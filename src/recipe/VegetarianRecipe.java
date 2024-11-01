@@ -3,17 +3,12 @@ package recipe;
 import java.util.List;
 
 public class VegetarianRecipe extends Recipe {
-    protected int ovenTimeInMinutes;
-    protected int ovenTemperatureInCelsius;
-    protected boolean isSweet;
+    protected boolean isVegetarian;
 
     public VegetarianRecipe(String name,
-                            List<Ingredient> ingredientList, List<String> instructionList,
-                            int ovenTimeInMinutes, int ovenTemperatureInCelsius, boolean isSweet) {
+                            List<Ingredient> ingredientList, List<String> instructionList, boolean isVegetarian) {
         super(name);
-        this.ovenTimeInMinutes = ovenTimeInMinutes;
-        this.ovenTemperatureInCelsius = ovenTemperatureInCelsius;
-        this.isSweet = isSweet;
+        this.isVegetarian = isVegetarian;
         ingredientList.forEach(this::addIngredient);
         instructionList.forEach(this::addInstruction);
     }

@@ -31,24 +31,20 @@ public class RecipeBuilder {
 
         switch (newRecipeCookingMethod) {
             case 1 -> {
-                int ovenTimeMinute = InputScanner.getValidatedIntegerInput(
-                        "\nHow many minutes must this dish endure the flames of the oven: ",5,100);
-                int ovenTempCelsius = InputScanner.getValidatedIntegerInput(
-                        "\nTo what degree in celsius must the fires of the oven burn?: ",50,300);
-                boolean isSweet = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
+                boolean isVegetarian = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
 
                 recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(),ovenTimeMinute, ovenTempCelsius, isSweet, null);
+                        new ArrayList<>(), isVegetarian, null);
             }
             case 2 -> {
                 String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
                         "this dish—gentle embers, a steady flame, or a roaring inferno?");
                 recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(),0, 0, false, stoveHeatStrength);
+                        new ArrayList<>(), false, stoveHeatStrength);
             }
             case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, new ArrayList<>(),
-                    new ArrayList<>(),0,0,false,null);
+                    new ArrayList<>(),false,null);
         }
 
         if (recipe != null) {
