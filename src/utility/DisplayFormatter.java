@@ -23,9 +23,6 @@ public class DisplayFormatter {
         System.out.println("\n");
         recipeString.append(recipe.getRecipeName())
                 .append("\n------------------------------------------------------------\n")
-                .append("Main Protein Type: ")
-                .append(recipe.getProteinCategory())
-                .append("\n------------------------------------------------------------\n")
                 .append("Ingredients: \n");
         for (Ingredient ingredient : recipe.getIngredientsList()){
             recipeString.append("- ").append(ingredient).append("\n");

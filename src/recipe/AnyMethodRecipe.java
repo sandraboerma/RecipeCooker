@@ -3,9 +3,9 @@ package recipe;
 import java.util.List;
 
 public class AnyMethodRecipe extends Recipe{
-    public AnyMethodRecipe(String name, String proteinCategory,
+    public AnyMethodRecipe(String name,
                            List<Ingredient> ingredientList, List<String> instructionList){
-        super(name, proteinCategory);
+        super(name);
         ingredientList.forEach(this::addIngredient);
         instructionList.forEach(this::addInstruction);
     }

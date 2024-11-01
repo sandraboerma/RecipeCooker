@@ -7,10 +7,10 @@ public class OvenRecipe extends Recipe {
     protected int ovenTemperatureInCelsius;
     protected boolean isSweet;
 
-    public OvenRecipe(String name, String proteinCategory,
+    public OvenRecipe(String name,
                       List<Ingredient> ingredientList, List<String> instructionList,
                       int ovenTimeInMinutes, int ovenTemperatureInCelsius, boolean isSweet) {
-        super(name, proteinCategory);
+        super(name);
         this.ovenTimeInMinutes = ovenTimeInMinutes;
         this.ovenTemperatureInCelsius = ovenTemperatureInCelsius;
         this.isSweet = isSweet;
