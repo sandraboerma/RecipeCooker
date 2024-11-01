@@ -1,0 +1,10 @@
+Another Random Dish
+------------------------------------------------------------
+Ingredients: 
+- A bunch of salad 300.0 gram
+- Mozarella 100.0 gram
+------------------------------------------------------------
+Cooking steps:
+1. Cut them veggies
+2. Cut them Mozzies
+============================================================

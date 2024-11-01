@@ -38,16 +38,16 @@ public class RecipeBuilder {
                 boolean isSweet = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
                         "a treat from the realms of sweetness and indulgence?");
 
-                recipe = RecipeFactory.createRecipe(CookingMethod.OVEN, newRecipeName, new ArrayList<>(),
+                recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
                         new ArrayList<>(),ovenTimeMinute, ovenTempCelsius, isSweet, null);
             }
             case 2 -> {
                 String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
                         "this dish—gentle embers, a steady flame, or a roaring inferno?");
-                recipe = RecipeFactory.createRecipe(CookingMethod.STOVE, newRecipeName, new ArrayList<>(),
+                recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, new ArrayList<>(),
                         new ArrayList<>(),0, 0, false, stoveHeatStrength);
             }
-            case 3 -> recipe = RecipeFactory.createRecipe(CookingMethod.ANY_METHOD, newRecipeName, new ArrayList<>(),
+            case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, new ArrayList<>(),
                     new ArrayList<>(),0,0,false,null);
         }
 
