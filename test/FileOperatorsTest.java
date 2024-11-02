@@ -18,11 +18,11 @@ public class FileOperatorsTest {
 //        assertTrue(FileOperators.writeToPath(path));
 //    }
 
-    @Test
-    public void testReadPath(){
-        Path path = Path.of("");
-        assertTrue(FileOperators.readPath(path));
-    }
+//    @Test
+//    public void testReadPath(){
+//        Path path = Path.of("");
+//        assertTrue(FileOperators.readPath(path));
+//    }
 
     @Test
     public void testDeletePath(){

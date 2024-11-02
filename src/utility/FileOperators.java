@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileOperators {
@@ -44,20 +45,17 @@ public class FileOperators {
         }
     }
 
-    public static boolean readPath(Path pathName){
+    public static List<String> readPath(Path pathName){
         try {
-            Files.readAllLines(pathName).forEach(System.out::println);
-            return true;
+            return Files.readAllLines(pathName);
         } catch (NoSuchFileException e) {
             System.out.println("Selected recipe: " + pathName + " is not found.");
-            return true;
         } catch (AccessDeniedException e) {
             System.out.println("You don't have permission to read this recipe.");
-            return true;
         } catch (IOException e) {
             System.out.println("An I/O error occurred: " + e);
-            return false;
         }
+        return Collections.singletonList(AnsiPalette.ORANGE + "404 ERROR!" + AnsiPalette.RESET);
     }
 
     public static List<Path> listRecipeFiles() {
