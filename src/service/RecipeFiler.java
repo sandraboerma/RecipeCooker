@@ -39,17 +39,18 @@ public class RecipeFiler {
                 existingRecipeIndex++;
             }
         }
+
         int selectedRecipeIndex = InputScanner.getValidatedIntegerInput(
                 "Which recipe would you like to retrieve?: ",1,recipeFiles.size());
-
+        System.out.println("\n============================================================");
         Path selectedRecipeFile = recipeFiles.get(selectedRecipeIndex -1);
-
         List<String> recipeContent = FileOperators.readPath(selectedRecipeFile);
+
         if (recipeContent != null) {
-            System.out.println("\n");
             recipeContent.forEach(System.out::println);
         } else {
             System.out.println(AnsiPalette.ORANGE + "Ahoy looks like another 404 ERROR!" + AnsiPalette.RESET);
         }
     }
 }
+

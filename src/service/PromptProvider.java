@@ -3,16 +3,14 @@ package service;
 import utility.AnsiPalette;
 import utility.DisplayFormatter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PromptProvider {
 
     private static final List<String> greetings = new ArrayList<>();
     private static final List<String> askForValidInput = new ArrayList<>();
     private static final TreeMap<Integer, String> mainMenu = new TreeMap<>();
+    private static final TreeMap<Integer, String> recipeActionMenu = new TreeMap<>();
     private static final List<String> farewells = new ArrayList<>();
 
     static {
@@ -66,9 +64,14 @@ public class PromptProvider {
 
     private static void initializeMainMenu() {
         mainMenu.put(1, "Create Recipe");
-        mainMenu.put(2, "View Recipe");
-        mainMenu.put(3, "Delete Recipe");
-        mainMenu.put(4, "Exit");
+        mainMenu.put(2, "Show Recipes");
+        mainMenu.put(3, "Exit");
+    }
+
+    private static void initializeRecipeActionMenu() {
+        recipeActionMenu.put(1, "");
+        recipeActionMenu.put(2, "");
+        recipeActionMenu.put(3, "");
     }
 
     private static void initializeFarewells() {
