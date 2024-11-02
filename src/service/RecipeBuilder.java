@@ -31,11 +31,10 @@ public class RecipeBuilder {
 
         switch (newRecipeCookingMethod) {
             case 1 -> {
-                boolean isVegetarian = InputScanner.getValidatedBooleanInput(
+                boolean isVegan = InputScanner.getValidatedBooleanInput(
                         "\nIs this recipe suitable for Vegans as well? Yes/No: ");
-
                 recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(), isVegetarian, false);
+                        new ArrayList<>(), isVegan, false);
             }
             case 2 -> {
                 boolean containsOats = InputScanner.getValidatedBooleanInput(
@@ -46,7 +45,6 @@ public class RecipeBuilder {
             case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, new ArrayList<>(),
                     new ArrayList<>(),false,false);
         }
-
         if (recipe != null) {
             RecipeEnricher.ingredients(recipe);
             RecipeEnricher.instructions(recipe);

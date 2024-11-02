@@ -15,4 +15,3 @@ public class GlutenFreeRecipe extends Recipe {
         instructionList.forEach(this::addInstruction);
     }
 }
-//old stove class
