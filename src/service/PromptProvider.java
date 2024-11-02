@@ -17,6 +17,7 @@ public class PromptProvider {
         initializeGreetings();
         initializeAskForValidInput();
         initializeMainMenu();
+        initializeRecipeActionMenu();
         initializeFarewells();
     }
 
@@ -69,9 +70,9 @@ public class PromptProvider {
     }
 
     private static void initializeRecipeActionMenu() {
-        recipeActionMenu.put(1, "");
-        recipeActionMenu.put(2, "");
-        recipeActionMenu.put(3, "");
+        recipeActionMenu.put(1, "Show another recipe");
+        recipeActionMenu.put(2, "Delete this recipe");
+        recipeActionMenu.put(3, "Go back to the previous menu");
     }
 
     private static void initializeFarewells() {
@@ -108,8 +109,16 @@ public class PromptProvider {
         return mainMenu;
     }
 
+    private static TreeMap<Integer, String> getRecipeActionMenu(){
+        return recipeActionMenu;
+    }
+
     public static String getFormattedMainMenu(){
         return DisplayFormatter.getFormattedMenu(getMainMenu());
+    }
+
+    public static String getFormattedRecipeActionMenu(){
+        return DisplayFormatter.getFormattedMenu(getRecipeActionMenu());
     }
 
 }
