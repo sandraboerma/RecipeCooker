@@ -35,16 +35,15 @@ public class RecipeBuilder {
                         "a treat from the realms of sweetness and indulgence?");
 
                 recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(), isVegetarian, null);
+                        new ArrayList<>(), isVegetarian, false);
             }
             case 2 -> {
-                String stoveHeatStrength = InputScanner.getUserInput("What strength of fire do you summon for " +
-                        "this dish—gentle embers, a steady flame, or a roaring inferno?");
+                boolean containsOats = InputScanner.getValidatedBooleanInput("Will the recipe contain oats? :");
                 recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(), false, stoveHeatStrength);
+                        new ArrayList<>(), false, containsOats);
             }
             case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, new ArrayList<>(),
-                    new ArrayList<>(),false,null);
+                    new ArrayList<>(),false,false);
         }
 
         if (recipe != null) {

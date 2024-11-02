@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract class Recipe {
 
-    private String name;
-    private List<Ingredient> ingredientList;
-    private List<String> instructionsList;
+    private final String name;
+    private final List<Ingredient> ingredientList;
+    private final List<String> instructionsList;
 
     public Recipe(String name) {
         this.name = name;
