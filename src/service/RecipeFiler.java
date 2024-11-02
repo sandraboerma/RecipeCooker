@@ -1,7 +1,6 @@
 package service;
 
 import recipe.Recipe;
-import utility.AnsiPalette;
 import utility.DisplayFormatter;
 import utility.FileOperators;
 
