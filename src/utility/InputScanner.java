@@ -56,11 +56,11 @@ public static String getUserInput(String prompt) {
 
     public static boolean getValidatedBooleanInput(String prompt) {
         while (true) {
-            System.out.print(prompt + "\n1. Yes\n2. No\nCast your choice, and let fate be decided: ");
+            System.out.print(prompt);
             String booleanInput = input.nextLine().trim();
             switch (booleanInput) {
-                case "1", "yes", "Yes", "YES" -> { return true; }
-                case "2", "no", "No", "NO" -> { return false; }
+                case "1", "yes", "Yes", "YES", "y", "Y" -> { return true; }
+                case "2", "no", "No", "NO", "n", "N" -> { return false; }
                 default -> System.out.println(AnsiPalette.RED + PromptProvider.getAskForValidInput() +
                         AnsiPalette.RESET);
             }

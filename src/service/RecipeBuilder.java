@@ -31,14 +31,15 @@ public class RecipeBuilder {
 
         switch (newRecipeCookingMethod) {
             case 1 -> {
-                boolean isVegetarian = InputScanner.getValidatedBooleanInput("\nAre we preparing to summon " +
-                        "a treat from the realms of sweetness and indulgence?");
+                boolean isVegetarian = InputScanner.getValidatedBooleanInput(
+                        "\nIs this recipe suitable for Vegans as well? Yes/No: ");
 
                 recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
                         new ArrayList<>(), isVegetarian, false);
             }
             case 2 -> {
-                boolean containsOats = InputScanner.getValidatedBooleanInput("Will the recipe contain oats? :");
+                boolean containsOats = InputScanner.getValidatedBooleanInput(
+                        "Does the recipe contain oats? Yes/No: ");
                 recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, new ArrayList<>(),
                         new ArrayList<>(), false, containsOats);
             }

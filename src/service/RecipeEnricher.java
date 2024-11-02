@@ -13,7 +13,7 @@ public class RecipeEnricher {
             double quantity = InputScanner.getValidatedDoubleInput("Required amount: ");
             Ingredient newIngredient = new Ingredient(name, unit, quantity);
             recipe.addIngredient(newIngredient);
-            addingIngredient = InputScanner.getValidatedBooleanInput("Add more ingredients?");
+            addingIngredient = InputScanner.getValidatedBooleanInput("Add more ingredients? Yes/No: ");
         } while (addingIngredient);
     }
 
@@ -22,7 +22,7 @@ public class RecipeEnricher {
         do {
             String newInstruction = InputScanner.getUserInput("\nAdd instruction: ");
             recipe.addInstruction(newInstruction);
-            addingInstruction = InputScanner.getValidatedBooleanInput("Add more instructions?");
+            addingInstruction = InputScanner.getValidatedBooleanInput("Add more instructions? Yes/No: ");
         } while (addingInstruction);
     }
 }
