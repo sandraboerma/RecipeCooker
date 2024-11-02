@@ -1,6 +1,7 @@
 package service;
 
 import recipe.*;
+import utility.AnsiPalette;
 import utility.DisplayFormatter;
 import utility.InputScanner;
 
@@ -12,20 +13,19 @@ public class RecipeBuilder {
     public static void createRecipeFromUserInput() {
         String newRecipeName;
         do {
-            newRecipeName = InputScanner.getUserInput("""
-                    Bestow upon this creation a name worthy of its taste and power!
-                    The name of this dish is:\s""");
+            newRecipeName = InputScanner.getUserInput("The name of this recipe is: ");
             if (RecipeFiler.recipeExists(newRecipeName)) {
-                System.out.println("A recipe with this name already exists! Please choose a different name.\n");
+                System.out.println(AnsiPalette.RED +
+                        "A recipe with this name already exists! Please choose a different name.\n"
+                        + AnsiPalette.RESET);
             }
         } while (RecipeFiler.recipeExists(newRecipeName));
 
         int newRecipeCookingMethod = InputScanner.getValidatedIntegerInput("""
-                \nBy what arcane method shall this dish be prepared?
-                1. Enchanted within the fiery depths of the oven, either baked or roasted.
-                2. Simmered in a cauldron, pan-seared over flame, or gently steamed atop the hearth.
-                3. An ancient ritual, known only to seasoned culinary wizards... Or just a simple salad.
-                Make thy choice (1-3):\s""",1,3);
+                \n1. Vegetarians or vegans
+                2. Gluten Avoidant
+                3. Anyone
+                This recipe is suitable for (1-3):\s""",1,3);
 
         Recipe recipe = null;
 
