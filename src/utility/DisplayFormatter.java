@@ -44,27 +44,6 @@ public class DisplayFormatter {
         return recipeString.toString();
     }
 
-//    private static String formatRecipe(Recipe recipe){
-//        StringBuilder recipeString = new StringBuilder();
-//        System.out.println("\n");
-//        recipeString.append(recipe.getRecipeName())
-//                .append("\n------------------------------------------------------------\n")
-//                .append("Ingredients: \n");
-//        for (Ingredient ingredient : recipe.getIngredientsList()){
-//            recipeString.append("- ").append(ingredient).append("\n");
-//        }
-//
-//        recipeString.append("------------------------------------------------------------")
-//                .append("\nCooking steps:\n");
-//        int stepNumber = 1;
-//        for (String instruction : recipe.getInstructionsList()){
-//            recipeString.append(stepNumber).append(". ").append(instruction).append("\n");
-//            stepNumber++;
-//        }
-//        recipeString.append("============================================================");
-//        return recipeString.toString();
-//    }
-
     public static String formatFileNameForDisplay(String recipeFileName) {
         String nameWithoutExtension = recipeFileName.replace(".txt","");
         String formattedRecipeName = nameWithoutExtension.replace("_", " ");

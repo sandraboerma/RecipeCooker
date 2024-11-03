@@ -32,7 +32,6 @@ public class RecipeFiler {
     }
 
     public static Path displayExistingRecipes(List<Path> recipeFiles) {
-        //List<Path> recipeFiles = FileOperators.listRecipeFiles();
         int existingRecipeIndex = 1;
         for (Path recipeFile : recipeFiles) {
             String recipeNameToDisplay = FileOperators.readRecipeName(recipeFile);
@@ -43,9 +42,7 @@ public class RecipeFiler {
                 existingRecipeIndex++;
             }
         }
-//    }
-//
-//    public static void displaySelectedRecipe(List<Path> recipeFiles) {
+
         int selectedRecipeIndex = InputScanner.getValidatedIntegerInput(
                 "Which recipe would you like to retrieve?: ",1,recipeFiles.size());
         System.out.println("\n============================================================");
