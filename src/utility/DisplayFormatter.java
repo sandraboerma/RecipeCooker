@@ -58,7 +58,7 @@ public class DisplayFormatter {
         return formatRecipe(recipe);
     }
 
-    private static String capitalizeFirstLetterOfFileName(String inputToFormat) {
+    public static String capitalizeFirstLetterOfFileName(String inputToFormat) {
         return inputToFormat.substring(0,1).toUpperCase() + inputToFormat.substring(1).toLowerCase();
     }
 }

@@ -13,7 +13,8 @@ public class RecipeBuilder {
     public static void createRecipeFromUserInput() {
         String newRecipeName;
         do {
-            newRecipeName = InputScanner.getUserInput("The name of this recipe is: ");
+            newRecipeName = DisplayFormatter.capitalizeFirstLetterOfFileName(
+                    InputScanner.getUserInput("The name of this recipe is: "));
             if (RecipeFiler.recipeExists(newRecipeName)) {
                 System.out.println(AnsiPalette.RED +
                         "A recipe with this name already exists! Please choose a different name.\n"
