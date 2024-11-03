@@ -13,7 +13,7 @@ public class RecipeBuilder {
     public static void createRecipeFromUserInput() {
         String newRecipeName;
         do {
-            newRecipeName = DisplayFormatter.capitalizeFirstLetterOfFileName(
+            newRecipeName = DisplayFormatter.capitalizeFirstLetter(
                     InputScanner.getUserInput("The name of this recipe is: "));
             if (RecipeFiler.recipeExists(newRecipeName)) {
                 System.out.println(AnsiPalette.RED +
@@ -34,17 +34,17 @@ public class RecipeBuilder {
             case 1 -> {
                 boolean isVegan = InputScanner.getValidatedBooleanInput(
                         "\nIs this recipe suitable for Vegans as well? Yes/No: ");
-                recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(), isVegan, false);
+                recipe = RecipeFactory.createRecipe(DietaryPreference.VEGETARIAN, newRecipeName, DietaryPreference.VEGETARIAN,
+                        new ArrayList<>(), new ArrayList<>(), isVegan, false);
             }
             case 2 -> {
                 boolean containsOats = InputScanner.getValidatedBooleanInput(
-                        "Does the recipe contain oats? Yes/No: ");
-                recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, new ArrayList<>(),
-                        new ArrayList<>(), false, containsOats);
+                        "\nDoes the recipe contain oats? Yes/No: ");
+                recipe = RecipeFactory.createRecipe(DietaryPreference.GLUTEN_FREE, newRecipeName, DietaryPreference.GLUTEN_FREE,
+                        new ArrayList<>(), new ArrayList<>(), false, containsOats);
             }
-            case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, new ArrayList<>(),
-                    new ArrayList<>(),false,false);
+            case 3 -> recipe = RecipeFactory.createRecipe(DietaryPreference.ANY_DIET, newRecipeName, DietaryPreference.ANY_DIET,
+                    new ArrayList<>(), new ArrayList<>(),false,false);
         }
         if (recipe != null) {
             RecipeEnricher.ingredients(recipe);

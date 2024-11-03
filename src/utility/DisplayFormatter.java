@@ -1,7 +1,9 @@
 package utility;
 
+import recipe.GlutenFreeRecipe;
 import recipe.Ingredient;
 import recipe.Recipe;
+import recipe.VegetarianRecipe;
 
 import java.util.TreeMap;
 
@@ -24,8 +26,21 @@ public class DisplayFormatter {
         if (recipeData instanceof Recipe recipe) {
             System.out.println("\n");
             recipeString.append(recipe.getRecipeName())
-                    .append("\n------------------------------------------------------------\n")
-                    .append("Ingredients: \n");
+                    .append("\n------------------------------------------------------------\n");
+
+            if (recipe instanceof VegetarianRecipe vegetarianRecipe) {
+                recipeString.append("Category: ").append(recipe.getDietaryPreference()).append("\n").
+                        append("Suitable for Vegans: ")
+                        .append(getFormattedIsVegan(vegetarianRecipe))
+                        .append("\n------------------------------------------------------------\n");
+            } else if (recipe instanceof GlutenFreeRecipe glutenFreeRecipe) {
+                recipeString.append("Category: ").append(recipe.getDietaryPreference()).append("\n").
+                        append("Contains Oats: ")
+                        .append(getFormattedContainsOats(glutenFreeRecipe))
+                        .append("\n------------------------------------------------------------\n");
+            }
+
+            recipeString.append("Ingredients: \n");
             for (Ingredient ingredient : recipe.getIngredientsList()) {
                 recipeString.append("- ").append(ingredient).append("\n");
             }
@@ -47,7 +62,7 @@ public class DisplayFormatter {
     public static String formatFileNameForDisplay(String recipeFileName) {
         String nameWithoutExtension = recipeFileName.replace(".txt","");
         String formattedRecipeName = nameWithoutExtension.replace("_", " ");
-        return capitalizeFirstLetterOfFileName(formattedRecipeName);
+        return capitalizeFirstLetter(formattedRecipeName);
     }
 
     public static String getFormattedMenu(TreeMap<Integer, String> menu) {
@@ -58,7 +73,15 @@ public class DisplayFormatter {
         return formatRecipe(recipe);
     }
 
-    public static String capitalizeFirstLetterOfFileName(String inputToFormat) {
+    public static String getFormattedIsVegan(VegetarianRecipe recipe) {
+        return recipe.isVegan() ? "Yes" : "No";
+    }
+
+    public static String getFormattedContainsOats(GlutenFreeRecipe recipe) {
+        return recipe.containsOats() ? "Yes" : "No";
+    }
+
+    public static String capitalizeFirstLetter(String inputToFormat) {
         return inputToFormat.substring(0,1).toUpperCase() + inputToFormat.substring(1).toLowerCase();
     }
 }
