@@ -33,8 +33,9 @@ public class MenuServices {
     private static void navigateRecipeActionMenu(Path selectedRecipeFile) {
         boolean exitRecipeActionMenu = false;
         while (!exitRecipeActionMenu) {
-            System.out.println("\n" + PromptProvider.getFormattedRecipeActionMenu());
-            int recipeActionChoice = InputScanner.getValidatedIntegerInput("What you want?! ",1,3);
+            int recipeActionChoice = InputScanner.getValidatedIntegerInput(
+                    "\nWhat would you like to do with this recipe?\n" +
+                    PromptProvider.getFormattedRecipeActionMenu() + "\nChoose an option to continue: ",1,3);
 
             switch (recipeActionChoice) {
                 case 1 -> {
