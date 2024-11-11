@@ -19,7 +19,9 @@ public class MenuServices {
                 case 2 -> {
                     List<Path> recipeFiles = RecipeFiler.listRecipeFiles();
                     Path selectedRecipeFile = RecipeFiler.displayExistingRecipes(recipeFiles);
-                    navigateRecipeActionMenu(selectedRecipeFile);
+                    if (selectedRecipeFile != null) {
+                        navigateRecipeActionMenu(selectedRecipeFile);
+                    }
                 }
                 case 3 -> {
                     System.out.println(PromptProvider.getFarewells());
